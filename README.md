@@ -4,7 +4,11 @@
 
 Welcome to the SAP Cloud Platform "Risk Management" example application and tutorial.
 
-Use this example to learn how to develop an application based on SAP Cloud Application Programming Model (CAP) and how to deploy it on SAP Cloud Platform step by step. The tutorial contains multiple lessons that are built upon each other. You can start the tutorial with the first lesson, or start in between, because the source code for every tutorial lesson is provided in this repository.
+Use this example to learn how to develop an application based on SAP Cloud Application Programming Model (CAP) and how to deploy it on SAP Cloud Platform step by step. It is planned to provide multiple lessons that are built upon each other. You can start the tutorial with the first lesson, or start in between, because the source code for every tutorial lesson is provided in this repository.
+
+This first version of the tutorial, contains an example CAP application with a Fiori Elements and SAPUI5 Freestyle UI, and based on that a tutorial that shows how to deploy that application to Kyma.
+
+Watch out for new lessons.
 
 ## Contents
 
@@ -27,7 +31,7 @@ checkout cap/freestyle-ui5-app
 
 ## Known Issues
 
-You can find the known issues here: [Issues](https://github.com/SAP-samples/cloud-cap-risk-management/issues).
+You can find the known issues here: [Cloud CAP Risk Management Issues](https://github.com/SAP-samples/cloud-cap-risk-management/issues).
 
 ## How to Obtain Support
 
