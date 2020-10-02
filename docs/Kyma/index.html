@@ -932,11 +932,22 @@ code .
 <p>Although Kyma is needed at a later point in the tutorial, it’s recommended to start with this step, because the Kyma provisioning may take some time.</p>
 <p>You can either create your own SAP Cloud Platform Trial account or add Kyma to an existing Subaccount.</p>
 <h4 id="create-your-own-sap-cloud-platform-trial-account">Create Your Own SAP Cloud Platform Trial account</h4>
+<ol>
+<li><a href="https://cockpit.eu10.hana.ondemand.com/trial/#/home/trial">https://cockpit.eu10.hana.ondemand.com/trial/#/home/trial</a></li>
+<li>Choose <em>Enter Your Trial Account</em></li>
+<li>If you don't have a user you need to register</li>
+<li>Wait for the completion of the on-boarding</li>
+<li>You should land on the <em>Subaccounts</em> page of your trial <em>Global Account</em></li>
+<li>Choose on <em>trial</em></li>
+<li>Choose <em>Enable Kyma</em></li>
+</ol>
+<p>This will take a while. You can start the tutorial in the meantime.</p>
+<p>If you already have an older trial account, then you might not see the <em>Enable Kyma</em> button. In that case goto <em>Entitlements</em> and add the <em>Kyma Runtime</em> <em>Service Plan</em>.</p>
 <h4 id="use-an-existing-sap-cloud-platform-subaccount">Use an Existing SAP Cloud Platform Subaccount</h4>
-<p>Please follow the steps "Enabling the Kyma runtime" and "Provide Authorization to access Kyma runtime" in this blog:</p>
-<p><a href="https://blogs.sap.com/2020/05/13/sap-cloud-platform-extension-factory-kyma-runtime-how-to-get-started/">https://blogs.sap.com/2020/05/13/sap-cloud-platform-extension-factory-kyma-runtime-how-to-get-started/</a></p>
+<p>Please follow the steps "Enabling the Kyma runtime" and "Provide Authorization to access Kyma runtime" in this blog post:
+* <a href="https://blogs.sap.com/2020/05/13/sap-cloud-platform-extension-factory-kyma-runtime-how-to-get-started/">https://blogs.sap.com/2020/05/13/sap-cloud-platform-extension-factory-kyma-runtime-how-to-get-started/</a></p>
 <h3 id="enable-cloud-foundry">Enable Cloud Foundry</h3>
-<p>To use the SAP HANA Cloud service, you can either enable Cloud Foundry for the same subaccount or use a different subaccount, for example, an already existing or Trial.</p>
+<p>To use the SAP HANA Cloud service, you can either enable Cloud Foundry for the same subaccount or use a different subaccount, for example, an already existing or trial subaccount.</p>
 <h3 id="install-the-cloud-foundry-cli">Install the Cloud Foundry CLI</h3>
 <p>Later in this tutorial, you need to log on to Cloud Foundry using the command line. Therefore, it's necessary to install the Cloud Foundry CLI. Please check the <a href="https://docs.cloudfoundry.org/cf-cli/install-go-cli.html">Cloud Foundry documentation</a> for detailed steps on how to do that.</p>
 <h2 id="run-the-cap-application-in-a-docker-container-locally">Run the CAP Application in a Docker Container Locally</h2>
