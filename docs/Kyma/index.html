@@ -280,6 +280,26 @@
     Enable Kyma
   </a>
   
+    <nav class="md-nav" aria-label="Enable Kyma">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create-your-own-sap-cloud-platform-trial-account" class="md-nav__link">
+    Create Your Own SAP Cloud Platform Trial account
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#use-an-existing-sap-cloud-platform-subaccount" class="md-nav__link">
+    Use an Existing SAP Cloud Platform Subaccount
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
           <li class="md-nav__item">
@@ -583,6 +603,26 @@
     Enable Kyma
   </a>
   
+    <nav class="md-nav" aria-label="Enable Kyma">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create-your-own-sap-cloud-platform-trial-account" class="md-nav__link">
+    Create Your Own SAP Cloud Platform Trial account
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#use-an-existing-sap-cloud-platform-subaccount" class="md-nav__link">
+    Use an Existing SAP Cloud Platform Subaccount
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
           <li class="md-nav__item">
@@ -827,9 +867,9 @@
                 
                 <h1 id="run-a-cap-application-on-kyma">Run a CAP Application on Kyma</h1>
 <h2 id="preface">Preface</h2>
-<p>SAP recently released the <a href="https://blogs.sap.com/2020/05/12/get-a-fully-managed-runtime-based-on-kyma-and-kubernetes/">SAP Cloud Platform Extension Factory, Kyma runtime</a>, a managed Kubernetes offering with Kyma.</p>
+<p>SAP recently released the <a href="https://blogs.sap.com/2020/05/12/get-a-fully-managed-runtime-based-on-kyma-and-kubernetes/">SAP Cloud Platform, Kyma runtime</a>, a managed Kubernetes offering with Kyma.</p>
 <p>Kyma is much about extending existing applications, but you also get a full-blown Kubernetes cluster including Istio service mesh that you can use to build a standalone cloud application.</p>
-<p>In this tutorial, you deploy an application built with the SAP Cloud Application Programming Model (CAP) to an <em>SAP Cloud Platform Extension Factory, Kyma runtime</em> cluster. The CAP application has an OData service, SAP Fiori UI and uses SAP HANA as a database.</p>
+<p>In this tutorial, you deploy an application built with the SAP Cloud Application Programming Model (CAP) to an <em>SAP Cloud Platform, Kyma runtime</em> cluster. The CAP application has an OData service, SAP Fiori UI and uses SAP HANA as a database.</p>
 <p>The <a href="https://github.com/SAP-samples/cloud-cap-risk-management">CAP Risk Management Example</a> is used as starting point.</p>
 <p>The tutorial can be also done with any other Kyma installation, but you need an SAP HANA database and an HDI container and you then need to do the part with HANA credentials differently.</p>
 <p>The CAP part is probably the smallest in the tutorial: Frankly speaking, just package it into a docker container and run it. But the tutorial also describes how to get a small docker registry running. If you're experienced with Kubernetes, you can skip some sections.</p>
@@ -890,6 +930,9 @@ code .
 <p>You need an SAP Cloud Platform Subaccount with consumption-based model (that is, Cloud Credits). Kyma is currently supported on Azure landscapes only, as of September 2020.</p>
 <h3 id="enable-kyma">Enable Kyma</h3>
 <p>Although Kyma is needed at a later point in the tutorial, it’s recommended to start with this step, because the Kyma provisioning may take some time.</p>
+<p>You can either create your own SAP Cloud Platform Trial account or add Kyma to an existing Subaccount.</p>
+<h4 id="create-your-own-sap-cloud-platform-trial-account">Create Your Own SAP Cloud Platform Trial account</h4>
+<h4 id="use-an-existing-sap-cloud-platform-subaccount">Use an Existing SAP Cloud Platform Subaccount</h4>
 <p>Please follow the steps "Enabling the Kyma runtime" and "Provide Authorization to access Kyma runtime" in this blog:</p>
 <p><a href="https://blogs.sap.com/2020/05/13/sap-cloud-platform-extension-factory-kyma-runtime-how-to-get-started/">https://blogs.sap.com/2020/05/13/sap-cloud-platform-extension-factory-kyma-runtime-how-to-get-started/</a></p>
 <h3 id="enable-cloud-foundry">Enable Cloud Foundry</h3>
