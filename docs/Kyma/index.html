@@ -1193,9 +1193,6 @@ The authentication session will expire after some hours. You then need to downlo
 </li>
 <li>
 <p>You need to make the docker registry available on the public internet. The details to this step are explained later. Run the following commands:</p>
-<div class="highlight"><pre><span></span><code><span class="nv">CLUSTER_DOMAIN</span><span class="o">=</span><span class="k">$(</span>kubectl config current-context<span class="k">)</span>
-</code></pre></div>
-
 <div class="highlight"><pre><span></span><code>kubectl apply -f - <span class="s">&lt;&lt;EOF</span>
 <span class="s">apiVersion: gateway.kyma-project.io/v1alpha1</span>
 <span class="s">kind: APIRule</span>
@@ -1205,7 +1202,7 @@ The authentication session will expire after some hours. You then need to downlo
 <span class="s">  name: docker-registry</span>
 <span class="s">spec:</span>
 <span class="s">  service:</span>
-<span class="s">    host: docker-registry.$CLUSTER_DOMAIN</span>
+<span class="s">    host: docker-registry</span>
 <span class="s">    name: docker-registry</span>
 <span class="s">    port: 5000</span>
 <span class="s">  gateway: kyma-gateway.kyma-system.svc.cluster.local</span>
@@ -1388,7 +1385,7 @@ Forwarding from [::1]:5000 -&gt; 5000
   <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">cpapp</span>
 <span class="nt">spec</span><span class="p">:</span>
   <span class="nt">service</span><span class="p">:</span>
-    <span class="nt">host</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">cpapp.{{CLUSTER_DOMAIN}}</span>
+    <span class="nt">host</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">cpapp</span>
     <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">cpapp</span>
     <span class="nt">port</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">4004</span>
   <span class="nt">gateway</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">kyma-gateway.kyma-system.svc.cluster.local</span>
@@ -1402,12 +1399,8 @@ Forwarding from [::1]:5000 -&gt; 5000
 
 </li>
 <li>
-<p>Replace the <code>{{CLUSTER_DOMAIN}}</code> variable in the <code>apirule.yaml</code> like in the section <code>Deploy the CAP Application</code> and run:</p>
+<p>Apply with:</p>
 <div class="highlight"><pre><span></span><code>kubectl apply -f deployment/apirule.yaml
-</code></pre></div>
-
-<p>Or simply run:</p>
-<div class="highlight"><pre><span></span><code>sed &lt;deployment/apirule.yaml <span class="s2">&quot;s/{{CLUSTER_DOMAIN}}/</span><span class="k">$(</span>kubectl config current-context<span class="k">)</span><span class="s2">/&quot;</span> <span class="p">|</span> kubectl apply -f -
 </code></pre></div>
 
 </li>
