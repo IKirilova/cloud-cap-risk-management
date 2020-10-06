@@ -20,7 +20,7 @@ metadata:
   name: cpapp
 spec:
   service:
-    host: cpapp.{{CLUSTER_DOMAIN}}
+    host: cpapp
     name: cpapp
     port: 4004
   gateway: kyma-gateway.kyma-system.svc.cluster.local
