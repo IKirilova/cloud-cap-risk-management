@@ -888,7 +888,6 @@
 <p>e.g.:</p>
 <div class="highlight"><pre><span></span><code>mkdir cap-kyma-app
 </code></pre></div>
-
 </li>
 <li>
 <p>Clone the example git repository and checkout the example branch</p>
@@ -896,14 +895,12 @@
 <span class="nb">cd</span> cloud-cap-risk-management
 git checkout cap/freestyle-ui5-app
 </code></pre></div>
-
 </li>
 <li>
 <p>Copy the all files from the example to your folder, except git <code>.git</code> folder</p>
 <p>e.g.:</p>
 <div class="highlight"><pre><span></span><code>cp -r .gitignore <span class="k">$(</span>ls -1A <span class="p">|</span> grep -v .git<span class="k">)</span> ../cap-kyma-app
 </code></pre></div>
-
 </li>
 <li>
 <p>Open a new project in your source editor for the folder <code>cap-kyma-app</code></p>
@@ -911,7 +908,6 @@ git checkout cap/freestyle-ui5-app
 <div class="highlight"><pre><span></span><code><span class="nb">cd</span> ../cap-kyma-app
 code .
 </code></pre></div>
-
 </li>
 </ol>
 <p>The final code is in the <a href="https://github.com/SAP-samples/cloud-cap-risk-management/tree/kyma/app">kyma/app</a> branch.</p>
@@ -961,7 +957,6 @@ code .
 <p>Navigate to the root folder of your app.</p>
 <div class="highlight"><pre><span></span><code>cd cpapp
 </code></pre></div>
-
 </li>
 <li>
 <p>Create a file named <code>Dockerfile</code> and add the following lines to it:</p>
@@ -991,14 +986,12 @@ code .
 </span><span class="hll">  <span class="p">}</span>
 </span><span class="p">}</span>
 </code></pre></div>
-
 <p>This tells CAP to use SQLite in dev and HANA in productive mode.</p>
 </li>
 <li>
 <p>Before you can build the image, run the <code>cds build</code>, because the image takes the build results from the <code>gen/srv</code> folder. You can also do this in the docker build, but that would require additional steps that you skip for now.</p>
 <div class="highlight"><pre><span></span><code>cds build
 </code></pre></div>
-
 </li>
 <li>
 <p>Build the docker image locally.</p>
@@ -1007,7 +1000,6 @@ code .
 </div>
 <div class="highlight"><pre><span></span><code>docker build -t cpapp .
 </code></pre></div>
-
 <p>This builds the docker image specified in <code>Dockerfile</code> from the current directory (<code>.</code> argument). The image is tagged with the name <code>cpapp</code>. Without giving a tag a random tag will be added.</p>
 <p>You should see an output similar like:</p>
 <div class="highlight"><pre><span></span><code>...
@@ -1024,7 +1016,6 @@ Removing intermediate container cb0b32163709
 <span class="hll">Successfully built 1e0c26b94ac6
 </span><span class="hll">Successfully tagged cpapp:latest
 </span></code></pre></div>
-
 </li>
 </ol>
 <p>Docker images consist of several "filesystem layers". The <em>base image</em> is a layer and your own docker image is a layer on top. Each layer can add or remove files. This is convenient because it saves storage because your custom images contain only the delta of files added or removed. To be more precise an image consists of multiple layers. The <code>docker build</code> will automatically decide when to create a new layer. You can see the different layers in the <code>docker build</code> output, for example: <code>---&gt; 365313c4290e</code></p>
@@ -1035,7 +1026,6 @@ Removing intermediate container cb0b32163709
 <p>You can run the docker container and look inside its contents.</p>
 <div class="highlight"><pre><span></span><code>docker run -i -t cpapp /bin/bash
 </code></pre></div>
-
 <p>This starts a docker container with your image (<code>-t cpapp</code>) and starts the bash shell (<code>/bin/bash</code>) that happens to be part of your base image in an interactive (<code>-i</code>) mode.</p>
 </li>
 <li>
@@ -1043,7 +1033,6 @@ Removing intermediate container cb0b32163709
 <div class="highlight"><pre><span></span><code>node@a5a0b8115eb5:/usr/src/app# ls
 manifest.yaml  node_modules  package-lock.json  package.json  srv
 </code></pre></div>
-
 </li>
 <li>
 <p>Exit the container using <code>exit</code> (Pro-Tip: <code>Ctrl+D</code> :-))</p>
@@ -1062,7 +1051,6 @@ You can try to access the service on <a href="http://localhost:4004">http://loca
 
 localhost refused to connect.
 </code></pre></div>
-
 <p>Although the docker container exposes port 4004, the "host" of the container, that is your PC or Mac, doesn't make it accessible. You need to declare it in the docker command line.</p>
 </li>
 <li>
@@ -1072,7 +1060,6 @@ localhost refused to connect.
 <p>Run the container again with the publish parameter.</p>
 <div class="highlight"><pre><span></span><code>docker run -p <span class="m">4004</span>:4004 -t cpapp
 </code></pre></div>
-
 <p>This tells docker to expose the port <code>4004</code> of the docker container to the port <code>4004</code> of the host. You could also use a different port of the host, but let's keep it simple.</p>
 <p>Now, you can access the CAP service on <a href="http://localhost:4004">http://localhost:4004</a>.</p>
 <p>You can click on the <em>Risks</em> (<a href="http://localhost:4004/service/risk/Risks">http://localhost:4004/service/risk/Risks</a>) or <em>Mitigations</em> (<a href="http://localhost:4004/service/risk/Risks">http://localhost:4004/service/risk/Risks</a>) link that returns an empty OData response.</p>
@@ -1096,20 +1083,17 @@ localhost refused to connect.
 <span class="k">USER</span><span class="s"> node</span>
 <span class="k">CMD</span> <span class="p">[</span> <span class="s2">&quot;npm&quot;</span><span class="p">,</span> <span class="s2">&quot;start&quot;</span> <span class="p">]</span>
 </code></pre></div>
-
 </li>
 <li>
 <p>Rebuild the docker image:</p>
 <div class="highlight"><pre><span></span><code>cds build
 docker build -t cpapp .
 </code></pre></div>
-
 </li>
 <li>
 <p>Run it locally:</p>
 <div class="highlight"><pre><span></span><code>docker run -p <span class="m">4004</span>:4004 -t cpapp
 </code></pre></div>
-
 </li>
 <li>
 <p>Try it out by navigating to: <a href="http://localhost:4004/launchpage.html">http://localhost:4004/launchpage.html</a></p>
@@ -1161,14 +1145,12 @@ docker build -t cpapp .
 <p>Set the new config file for the running shell process:</p>
 <div class="highlight"><pre><span></span><code><span class="nb">export</span> <span class="nv">KUBECONFIG</span><span class="o">=</span>~/.kube/cap-kyma-app-config
 </code></pre></div>
-
 <p>Now, you can access your kubernetes cluster.</p>
 </li>
 <li>
 <p>Check if you can access your kubernetes cluster.</p>
 <div class="highlight"><pre><span></span><code>kubectl get pods
 </code></pre></div>
-
 <p>The command should run without an error message, but it doesn't output any pods if you have a newly created cluster.</p>
 <p>If you want to use <code>kubectl</code> in another shell session, then rerun the <code>export</code> statement.
 The authentication session will expire after some hours. You then need to download the <code>kubeconfig.yml</code> file again and replace the value of the token parameter in your <code>cap-kyma-app-config</code> file with the one from the newly downloaded <code>kubeconfig.yml</code> file.</p>
@@ -1183,13 +1165,11 @@ The authentication session will expire after some hours. You then need to downlo
 <p>Add the stable Helm Chart repository to the <code>helm</code> CLI:</p>
 <div class="highlight"><pre><span></span><code>helm repo add stable https://kubernetes-charts.storage.googleapis.com/
 </code></pre></div>
-
 </li>
 <li>
 <p>Install the Helm Chart for a docker registry:</p>
 <div class="highlight"><pre><span></span><code>helm install docker-registry stable/docker-registry
 </code></pre></div>
-
 </li>
 <li>
 <p>You need to make the docker registry available on the public internet. The details to this step are explained later. Run the following commands:</p>
@@ -1214,7 +1194,6 @@ The authentication session will expire after some hours. You then need to downlo
 <span class="s">      mutators: []</span>
 <span class="s">EOF</span>
 </code></pre></div>
-
 </li>
 <li>
 <p>To be able to push docker images via HTTP, you need to add it as an "insecure registry" (not using secure socker communication) to your Docker config.</p>
@@ -1229,7 +1208,6 @@ The authentication session will expire after some hours. You then need to downlo
 <span class="hll">  <span class="nt">&quot;insecure-registries&quot;</span> <span class="p">:</span> <span class="p">[</span><span class="s2">&quot;0.0.0.0:5000&quot;</span><span class="p">]</span>
 </span><span class="p">}</span>
 </code></pre></div>
-
 </li>
 <li>
 <p>Choose <strong>Apply and Restart</strong>.</p>
@@ -1244,31 +1222,26 @@ The authentication session will expire after some hours. You then need to downlo
 <p>Since the docker registry isn’t exposed to the open internet (and you don't want to), you need to establish a tunnel from your localhost to the registry:</p>
 <div class="highlight"><pre><span></span><code>kubectl port-forward deployment/docker-registry <span class="m">5000</span>:5000 <span class="p">&amp;</span>
 </code></pre></div>
-
 <p>The <code>&amp;</code> causes the process to run in the background. You need to keep it running until you finished pushing docker images. You may need to start it newly in case the "docker push" doesn't work anymore.</p>
 <p>You should see the following output that tells you that the tunning is established:</p>
 <div class="highlight"><pre><span></span><code>Forwarding from 127.0.0.1:5000 -&gt; 5000
 Forwarding from [::1]:5000 -&gt; 5000
 </code></pre></div>
-
 </li>
 <li>
 <p>Your docker image needs an additional tag to declare it part of your <code>forwarded</code> docker registry. Otherwise you can't push it.</p>
 <div class="highlight"><pre><span></span><code>docker tag cpapp <span class="m">0</span>.0.0.0:5000/cpapp
 </code></pre></div>
-
 </li>
 <li>
 <p>Push it, using the new tag.</p>
 <div class="highlight"><pre><span></span><code>docker push <span class="m">0</span>.0.0.0:5000/cpapp
 </code></pre></div>
-
 <p>The output mixes the <code>docker push</code> output with the <code>kubectl port-forward</code> output. Anyhow it should finish with a line like:</p>
 <div class="codehilite"><pre><span></span><code><span class="o">```</span>
 <span class="n">latest</span><span class="p">:</span> <span class="n">digest</span><span class="p">:</span> <span class="n">sha256</span><span class="p">:</span><span class="mi">4054</span><span class="n">dd60ee4f9889d58aa97295cb3b1430a5c1549e602b6c619d7c4ed7d04ad0</span> <span class="k">size</span><span class="p">:</span> <span class="mi">2412</span>
 <span class="o">```</span>
 </code></pre></div>
-
 
 </li>
 </ol>
@@ -1279,7 +1252,6 @@ Forwarding from [::1]:5000 -&gt; 5000
 <p>Create a directory to store your deployment YAML files:</p>
 <div class="highlight"><pre><span></span><code>mkdir deployment
 </code></pre></div>
-
 </li>
 <li>
 <p>Create a file <code>deployment/deployment.yaml</code> with the following contents:</p>
@@ -1309,7 +1281,6 @@ Forwarding from [::1]:5000 -&gt; 5000
         <span class="nt">ports</span><span class="p">:</span>
         <span class="p p-Indicator">-</span> <span class="nt">containerPort</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">4004</span>
 </code></pre></div>
-
 <p>The file contains a placeholder <code>{{CLUSER_DOMAIN}}</code> that you need to replace with your cluster's domain. Either in the file or replacing it when applying the file.</p>
 <p>You can find your cluster's domain, for example, for the URL of the Kyma Console. If your console URL is for example <code>https://console.c-abcd123.kyma.shoot.live.k8s-hana.ondemand.com/</code>, the cluster's domain is <code>c-abcd123.kyma.shoot.live.k8s-hana.ondemand.com</code>, just without the leading <code>console.</code></p>
 </li>
@@ -1317,24 +1288,20 @@ Forwarding from [::1]:5000 -&gt; 5000
 <p>Apply the new configuration.</p>
 <div class="highlight"><pre><span></span><code>kubectl apply -f deployment/deployment.yaml
 </code></pre></div>
-
 <p>Or you can take it from the current <code>kubectl</code> configuration and replace it on deployment, like this:</p>
 <div class="highlight"><pre><span></span><code>sed &lt;deployment/deployment.yaml <span class="s2">&quot;s/{{CLUSTER_DOMAIN}}/</span><span class="k">$(</span>kubectl config current-context<span class="k">)</span><span class="s2">/&quot;</span> <span class="p">|</span> kubectl apply -f -
 </code></pre></div>
-
 </li>
 <li>
 <p>Check the state of the deployment using:</p>
 <div class="highlight"><pre><span></span><code>kubectl get deployments
 </code></pre></div>
-
 <p>Initially it looks like this:</p>
 <div class="codehilite"><pre><span></span><code><span class="o">```</span>
 <span class="n">NAME</span>              <span class="n">READY</span>   <span class="n">UP</span><span class="o">-</span><span class="k">TO</span><span class="o">-</span><span class="nb">DATE</span>   <span class="n">AVAILABLE</span>   <span class="n">AGE</span>
 <span class="n">cpapp</span>             <span class="mi">0</span><span class="o">/</span><span class="mi">1</span>     <span class="mi">1</span>            <span class="mi">0</span>           <span class="mi">5</span><span class="n">s</span>
 <span class="o">```</span>
 </code></pre></div>
-
 
 <p>If all goes well, it turns to:</p>
 <div class="codehilite"><pre><span></span><code><span class="o">```</span>
@@ -1343,13 +1310,11 @@ Forwarding from [::1]:5000 -&gt; 5000
 <span class="o">```</span>
 </code></pre></div>
 
-
 </li>
 <li>
 <p>Since you haven't exposed the app to the public internet, you can only access it with a tunnel. So lets create another tunnel.</p>
 <div class="highlight"><pre><span></span><code>kubectl port-forward deployment/cpapp <span class="m">4004</span>:4004
 </code></pre></div>
-
 </li>
 <li>
 <p>Open the CAP service in the browser: <a href="http://localhost:4004">http://localhost:4004</a></p>
@@ -1396,19 +1361,16 @@ Forwarding from [::1]:5000 -&gt; 5000
         <span class="p p-Indicator">-</span> <span class="nt">handler</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">noop</span>
       <span class="nt">mutators</span><span class="p">:</span> <span class="p p-Indicator">[]</span>
 </code></pre></div>
-
 </li>
 <li>
 <p>Apply with:</p>
 <div class="highlight"><pre><span></span><code>kubectl apply -f deployment/apirule.yaml
 </code></pre></div>
-
 </li>
 <li>
 <p>Look up your CAP service URL.</p>
 <div class="highlight"><pre><span></span><code><span class="nb">echo</span> <span class="s2">&quot;https://cpapp.</span><span class="k">$(</span>kubectl config current-context<span class="k">)</span><span class="s2">&quot;</span>
 </code></pre></div>
-
 <p>The console outputs your CAP service URL, for example <code>https://cpapp.example.kyma.live.k8s-hana.ondemand.com/</code>.</p>
 </li>
 <li>
@@ -1448,7 +1410,6 @@ Forwarding from [::1]:5000 -&gt; 5000
 </span><span class="hll">  <span class="err">...</span>
 </span><span class="hll"><span class="p">}</span>
 </span></code></pre></div>
-
 <p>With <code>requires.db.kind</code>: <code>sql</code> you tell CAP to use SQLite in dev and HANA in productive mode. The setting <code>hana.deploy-format</code>: <code>hdbtable</code> is required for HANA Cloud since it supports only the <code>hdbtable</code> and <code>hdbview</code> files for deployment.</p>
 </li>
 <li>
@@ -1466,7 +1427,6 @@ Forwarding from [::1]:5000 -&gt; 5000
 <span class="k">USER</span><span class="s"> node</span>
 <span class="k">CMD</span> <span class="p">[</span> <span class="s2">&quot;npm&quot;</span><span class="p">,</span> <span class="s2">&quot;start&quot;</span> <span class="p">]</span>
 </code></pre></div>
-
 </li>
 <li>
 <p>Rebuild the CAP project and the docker image for production.</p>
@@ -1474,7 +1434,6 @@ Forwarding from [::1]:5000 -&gt; 5000
 docker build -t 0.0.0.0:5000/cpapp .
 docker push 0.0.0.0:5000/cpapp
 </code></pre></div>
-
 <p>The command <code>cds build</code> uses the <code>--production</code> argument to build the HANA artifacts. <code>npm</code> and <code>node</code> uses the environment variable <code>NODE_ENV=production</code>. Without that CAP falls back to "development mode" settings and tries to use SQLite.</p>
 </li>
 </ol>
@@ -1486,20 +1445,17 @@ docker push 0.0.0.0:5000/cpapp
 <p>Set the Cloud Foundry API endpoint.</p>
 <div class="highlight"><pre><span></span><code>cf api &lt;api-endpoint&gt;
 </code></pre></div>
-
 <p>You can find the API Endpoint URL in the overview page of your subaccount.</p>
 </li>
 <li>
 <p>Log on to your Cloud Foundry account.</p>
 <div class="highlight"><pre><span></span><code>cf login
 </code></pre></div>
-
 </li>
 <li>
 <p>Run the following line to create an HDI container.</p>
 <div class="highlight"><pre><span></span><code>cds deploy --to hana:cpapp-kyma-hdi
 </code></pre></div>
-
 <p>The suffix <code>:cpapp-kyma-hdi</code> tells <code>cds deploy</code> to create an HDI container with name <code>cpapp-kyma-hdi</code>. It also creates a service key with the name <code>cpapp-kyma-hdi-key</code> that you use to access the database in the next section.</p>
 <p>Then it deploys the database tables and the test content.</p>
 <p>It should end with something like:</p>
@@ -1518,7 +1474,6 @@ Deployment to container C5DF44CB9C08482D821F5BC3BE344FCF done [Deployment ID: no
 (4s 499ms)
 Application can be stopped.
 </code></pre></div>
-
 <p>If it's missing, then there's probably a problem with the HDI deployer on your Operating System. It can be worked around by putting the HDI deployer in a docker container:</p>
 </li>
 </ol>
@@ -1536,12 +1491,10 @@ Application can be stopped.
 
 <span class="k">CMD</span> <span class="p">[</span> <span class="s2">&quot;npm&quot;</span><span class="p">,</span> <span class="s2">&quot;start&quot;</span><span class="p">,</span> <span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="s2">&quot;--exit&quot;</span> <span class="p">]</span>
 </code></pre></div>
-
 <p>Execute the following commands and check if the output gets right this time:</p>
 <div class="highlight"><pre><span></span><code>docker build -t cpapp-hdi-deployer -f Dockerfile.hdi-deploy .
 docker run --env <span class="nv">VCAP_SERVICES</span><span class="o">=</span><span class="s1">&#39;{&quot;hana&quot;:[{&quot;credentials&quot;: &#39;</span><span class="s2">&quot;</span><span class="k">$(</span>cf service-key cpapp-kyma-hdi cpapp-kyma-hdi-key <span class="p">|</span> sed 1d <span class="k">)</span><span class="s2">&quot;</span><span class="s1">&#39;, &quot;name&quot;: &quot;hana&quot;,&quot;label&quot;:&quot;hana&quot;,&quot;plan&quot;:&quot;hdi-shared&quot;,&quot;tags&quot;:[&quot;hana&quot;]}]}&#39;</span> -t cpapp-hdi-deployer
 </code></pre></div>
-
 <h3 id="add-sap-hana-hdi-container-credentials">Add SAP HANA HDI Container Credentials</h3>
 <p>You need to somehow inject the HANA credentials into the CAP application. On Cloud Foundry that is done using an env var called <code>VCAP_SERVICES</code> that takes the credentials for all bound services. Kubernetes takes a slightly different approach, it uses secrets, that can be injected into applications as env vars. But as individual env vars for each value. Luckily, CAP supports both.</p>
 <p>On Kyma the service credentials for HANA would look like this:</p>
@@ -1555,12 +1508,10 @@ schema=DE6922EF2F3449E984E2E794456B7CBE
 url=jdbc:sap://1d468818-87ad-4f9a-b762-a642b9070869.hana.eu10.hanacloud.ondemand.com:443?encrypt=true&amp;validateCertificate=true&amp;currentschema=DE6922EF2F3449E984E2E794456B7CBE
 user=DE6922EF2F3449E984E2E794456B7CBE_0BR49NOHL4VW9DC8NVZFXRN3O_RT
 </code></pre></div>
-
 <p>However, since you need to take the HANA credentials from CF, it’s easier to stick to the <code>VCAP_SERVICES</code> approach for now.</p>
 <p>So let's have a look at the credentials that have been created by <code>cds deploy</code>:</p>
 <div class="highlight"><pre><span></span><code>cf service-key cpapp-kyma-hdi cpapp-kyma-hdi-key
 </code></pre></div>
-
 <p>The output looks like this:
 <div class="highlight"><pre><span></span><code><span class="err">Getting</span> <span class="err">key</span> <span class="err">cpapp-kyma-hdi-key</span> <span class="err">for</span> <span class="err">service</span> <span class="err">instance</span> <span class="err">cpapp-kyma-hdi</span> <span class="err">as</span> <span class="err">MySelf...</span>
 
@@ -1611,7 +1562,6 @@ user=DE6922EF2F3449E984E2E794456B7CBE_0BR49NOHL4VW9DC8NVZFXRN3O_RT
         <span class="no">]</span>
     <span class="no">}</span>
 </code></pre></div>
-
 </li>
 <li>
 <p>Replace the <code>{{CREDENTIALS}}</code> variable.</p>
@@ -1632,7 +1582,6 @@ user=DE6922EF2F3449E984E2E794456B7CBE_0BR49NOHL4VW9DC8NVZFXRN3O_RT
 <p>Look at your uploaded secret:</p>
 <div class="highlight"><pre><span></span><code>kubectl describe secret cpapp-kyma-hdi-secret
 </code></pre></div>
-
 <p>It should be similar to the following output:</p>
 <div class="highlight"><pre><span></span><code>NAME                                    TYPE                                  DATA   AGE
 
@@ -1647,7 +1596,6 @@ Data
 ====
 VCAP_SERVICES:  2602 bytes
 </code></pre></div>
-
 </li>
 </ol>
 <h3 id="connect-cap-application-to-the-sap-hana-hdi-container">Connect CAP Application to the SAP HANA HDI Container</h3>
@@ -1667,7 +1615,6 @@ VCAP_SERVICES:  2602 bytes
 </span><span class="hll">          <span class="p p-Indicator">-</span> <span class="nt">secretRef</span><span class="p">:</span>
 </span><span class="hll">              <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">cpapp-kyma-hdi-secret</span>
 </span></code></pre></div>
-
 <p>This adds all name value pairs in the secret, currently only <code>VCAP_SERVICES</code>, as env vars to the container of the deployment.</p>
 </li>
 <li>
@@ -1690,20 +1637,17 @@ VCAP_SERVICES:  2602 bytes
 <p>Check the pods.</p>
 <div class="highlight"><pre><span></span><code>kubectl get pods
 </code></pre></div>
-
 <p>Output:</p>
 <div class="highlight"><pre><span></span><code>NAME                                 READY   STATUS     RESTARTS   AGE
 cpapp-566fcb5f9b-8dfjb               2/2     Running    0          26m
 cpapp-66b5cb4876-hx5l6               0/2     Init:0/1   0          2s
 </code></pre></div>
-
 <p>Rerun the command <code>kubectl get pods</code> until there’s only one <code>Running</code> pod for the application.</p>
 </li>
 <li>
 <p>Get the URL of your application.</p>
 <div class="highlight"><pre><span></span><code><span class="nb">echo</span> <span class="s2">&quot;https://cpapp.</span><span class="k">$(</span>kubectl config current-context<span class="k">)</span><span class="s2">&quot;</span>
 </code></pre></div>
-
 </li>
 <li>
 <p>Open the URL to your application.</p>
@@ -1718,19 +1662,16 @@ cpapp-66b5cb4876-hx5l6               0/2     Init:0/1   0          2s
 <p>You can use the following command to view the latest logs of your app.</p>
 <div class="highlight"><pre><span></span><code>kubectl logs $(kubectl get pods -l app=cpapp -o jsonpath=&#39;{.items[0].metadata.name}&#39;) cpapp
 </code></pre></div>
-
 <p>The log-level of the CAP application can be increased, by adding the env variable <code>DEBUG</code> to the <code>deployment/deployment.yaml</code> file and apply the file again with <code>kubectl</code>:</p>
 <div class="highlight"><pre><span></span><code>        env:
           - name: DEBUG
             value: &quot;y&quot;
 </code></pre></div>
-
 <p>Make sure that <code>env</code> has the same indent as <code>envFrom</code>.</p>
 <h3 id="execute-commands-in-the-applications-container">Execute Commands in the Application's Container</h3>
 <p>With the following command, you can "ssh" to your container and start a bash shell:</p>
 <div class="highlight"><pre><span></span><code>kubectl exec $(kubectl get pods -l app=cpapp -o jsonpath=&#39;{.items[0].metadata.name}&#39;) -t -i /bin/bash
 </code></pre></div>
-
 <h2 id="teardown">Teardown</h2>
 <p>If want to quickly delete all artifacts created in this tutorial, execute the following commands:</p>
 <div class="highlight"><pre><span></span><code>cf delete-service-key cpapp-kyma-hdi cpapp-kyma-hdi-key  -f
