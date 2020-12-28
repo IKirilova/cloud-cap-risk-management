@@ -3,6 +3,8 @@ general:
   gitSshKeyCredentialsId: github_ssh
   productiveBranch: 'kyma/app'
 steps:
+  buildExecute: 
+    dockerImageName: cloud-cap-risk-management
   artifactPrepareVersion:
     dockerVersionSource: custom
     filePath: cfg/VERSION  
