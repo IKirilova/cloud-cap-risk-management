@@ -1,6 +1,6 @@
 general:
   buildTool: 'docker'
-  gitSshKeyCredentialsId: github_ssh
+  gitHttpsCredentialsId: githubPersonalToken
   productiveBranch: 'kyma/app'
 steps:
   buildExecute: 
